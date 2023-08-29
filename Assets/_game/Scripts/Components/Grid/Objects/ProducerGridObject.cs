@@ -30,6 +30,9 @@ namespace _game.Scripts.Components.Grid.Objects
         public override void OnInteract()
         {
             Debug.Log($"Interacted {_view.name}");
+            
+            GridObjectSpawner.Instance.SpawnApplianceGridObject(_gridManager, 4, 4,
+                new ApplianceGridObjectData() { Number = 2 });
         }
     }
 }

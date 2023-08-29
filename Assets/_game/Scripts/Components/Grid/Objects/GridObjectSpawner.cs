@@ -14,6 +14,8 @@ namespace _game.Scripts.Components.Grid.Objects
             ApplianceGridObjectData data)
         {
             var gridCell = gridManager.GetCell(x, y);
+            if (gridCell.IsFilled()) return null;
+            
             var applianceGridObject = new ApplianceGridObject(gridManager, gridCell, m_applianceGridObjectView, data);
             gridCell.SetGridObject(applianceGridObject);
             return applianceGridObject;
@@ -23,6 +25,8 @@ namespace _game.Scripts.Components.Grid.Objects
             ProducerGridObjectData data)
         {
             var gridCell = gridManager.GetCell(x, y);
+            if (gridCell.IsFilled()) return null;
+            
             var producerGridObject =
                 new ProducerGridObject(gridManager, gridCell, m_producerGridObjectViewPrefab, data);
             gridCell.SetGridObject(producerGridObject);
