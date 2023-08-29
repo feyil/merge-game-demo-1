@@ -7,6 +7,7 @@ namespace _game.Scripts.Components.Grid
     public class GridManager : MonoBehaviour
     {
         [SerializeField] private RectTransform m_container;
+        [SerializeField] private RectTransform m_objectContainer;
         [SerializeField] private Vector2Int m_dimension;
         [SerializeField] private Vector2 m_spacing;
         [SerializeField] private GridCell m_gridCellPrefab;
@@ -54,12 +55,12 @@ namespace _game.Scripts.Components.Grid
             }
         }
 
-        public GridCell GetCell(Vector2Int cord)
+        public RectTransform GetObjectContainer()
         {
-            return GetCell(cord.x, cord.y);
+            return m_objectContainer;
         }
 
-        private GridCell GetCell(int x, int y)
+        public GridCell GetCell(int x, int y)
         {
             var index = GridCell.GetIndex(x, y);
             _currentGrid.TryGetValue(index, out var cell);
