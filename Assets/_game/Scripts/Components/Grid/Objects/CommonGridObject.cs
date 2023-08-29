@@ -27,5 +27,7 @@ namespace _game.Scripts.Components.Grid.Objects
         {
             Object.Destroy(_view);
         }
+
+        public abstract void OnInteract();
     }
 }

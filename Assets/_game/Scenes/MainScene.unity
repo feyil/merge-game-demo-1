@@ -123,12 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!224 &1005506376 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6133059123046159653, guid: acc65c1f0bcb74237bfbafe6173353d0,
-    type: 3}
-  m_PrefabInstance: {fileID: 6133059122587523693}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1044185316964309209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -205,20 +199,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 686108959, guid: 08cf9afbd77f441159327c83bc587903, type: 3}
-      propertyPath: m_canvasParent
-      value: 
-      objectReference: {fileID: 1005506376}
-    - target: {fileID: 2088114233, guid: 08cf9afbd77f441159327c83bc587903, type: 3}
-      propertyPath: m_producerPrefab
-      value: 
-      objectReference: {fileID: 2869656652897684742, guid: c07693568feb44ab48df4ffc4a250f93,
-        type: 3}
-    - target: {fileID: 2088114233, guid: 08cf9afbd77f441159327c83bc587903, type: 3}
-      propertyPath: m_appliancePrefab
-      value: 
-      objectReference: {fileID: 7067776738740868145, guid: 3d630269c067b4a02b1e17dfdb4aa102,
-        type: 3}
     - target: {fileID: 3618466488900348169, guid: 08cf9afbd77f441159327c83bc587903,
         type: 3}
       propertyPath: m_Name

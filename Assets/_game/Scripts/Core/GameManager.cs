@@ -1,4 +1,3 @@
-using System.Collections;
 using _game.Scripts.Components.Grid.Objects;
 using _game.Scripts.Components.Grid.Objects.Data;
 using _game.Scripts.Core.Ui;
@@ -10,9 +9,6 @@ namespace _game.Scripts.Core
 {
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private GameObject m_appliancePrefab;
-        [SerializeField] private GameObject m_producerPrefab;
-
         private void Awake()
         {
             InitializeAwake();
@@ -38,34 +34,19 @@ namespace _game.Scripts.Core
         {
             var gameUiController = UiManager.Get<GameUiController>();
             gameUiController.Show();
+
             var gridManager = gameUiController.GetGridManager();
-            var gridCell = gridManager.GetCell(0, 0);
-            gridCell.SetGridObject(new ApplianceGridObject(gridManager, gridCell, m_appliancePrefab,
-                new ApplianceGridObjectData()
-                {
-                    Number = 2
-                }));
+            
+            GridObjectSpawner.Instance.SpawnApplianceGridObject(gridManager, 0, 0,
+                new ApplianceGridObjectData() { Number = 2 });
+            
+            GridObjectSpawner.Instance.SpawnApplianceGridObject(gridManager, 2, 0,
+                new ApplianceGridObjectData() { Number = 4 });
+            
+            GridObjectSpawner.Instance.SpawnApplianceGridObject(gridManager, 4, 0,
+                new ApplianceGridObjectData() { Number = 2 });
 
-            gridCell = gridManager.GetCell(2, 0);
-            gridCell.SetGridObject(new ApplianceGridObject(gridManager, gridCell, m_appliancePrefab,
-                new ApplianceGridObjectData()
-                {
-                    Number = 4
-                }));
-
-            gridCell = gridManager.GetCell(4, 0);
-            gridCell.SetGridObject(new ApplianceGridObject(gridManager, gridCell, m_appliancePrefab,
-                new ApplianceGridObjectData()
-                {
-                    Number = 2
-                }));
-
-
-            gridCell = gridManager.GetCell(6, 0);
-            gridCell.SetGridObject(new ProducerGridObject(gridManager, gridCell, m_producerPrefab,
-                new ProducerGridObjectData()
-                {
-                }));
+            GridObjectSpawner.Instance.SpawnProducerGridObject(gridManager, 6, 0, new ProducerGridObjectData());
         }
     }
 }

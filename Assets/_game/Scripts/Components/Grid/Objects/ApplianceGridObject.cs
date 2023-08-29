@@ -9,8 +9,8 @@ namespace _game.Scripts.Components.Grid.Objects
         private readonly ApplianceGridObjectData _data;
         private readonly ApplianceGridObjectView _viewSpecif;
 
-        public ApplianceGridObject(GridManager gridManager, GridCell gridCell, GameObject viewPrefab,
-            ApplianceGridObjectData data) : base(gridManager, gridCell, viewPrefab)
+        public ApplianceGridObject(GridManager gridManager, GridCell gridCell, ApplianceGridObjectView viewPrefab,
+            ApplianceGridObjectData data) : base(gridManager, gridCell, viewPrefab.gameObject)
         {
             _data = data;
             _viewSpecif = _view.GetComponent<ApplianceGridObjectView>();
@@ -37,6 +37,11 @@ namespace _game.Scripts.Components.Grid.Objects
             _data.Number += applianceGridObject._data.Number;
             gridObject.Destroy();
             Refresh();
+        }
+
+        public override void OnInteract()
+        {
+            Debug.Log($"Interacted {_view.name}");
         }
     }
 }

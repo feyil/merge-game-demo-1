@@ -9,8 +9,8 @@ namespace _game.Scripts.Components.Grid.Objects
         private readonly ProducerGridObjectView _viewSpecif;
         private readonly ProducerGridObjectData _data;
 
-        public ProducerGridObject(GridManager gridManager, GridCell gridCell, GameObject viewPrefab,
-            ProducerGridObjectData data) : base(gridManager, gridCell, viewPrefab)
+        public ProducerGridObject(GridManager gridManager, GridCell gridCell, ProducerGridObjectView viewPrefab,
+            ProducerGridObjectData data) : base(gridManager, gridCell, viewPrefab.gameObject)
         {
             _data = data;
             _viewSpecif = _view.GetComponent<ProducerGridObjectView>();
@@ -25,6 +25,11 @@ namespace _game.Scripts.Components.Grid.Objects
         public override void Merge(IGridObject gridObject)
         {
             throw new System.NotImplementedException();
+        }
+
+        public override void OnInteract()
+        {
+            Debug.Log($"Interacted {_view.name}");
         }
     }
 }

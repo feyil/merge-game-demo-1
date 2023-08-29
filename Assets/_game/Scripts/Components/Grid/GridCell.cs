@@ -72,6 +72,11 @@ namespace _game.Scripts.Components.Grid
         public void OnPointerClick(PointerEventData eventData)
         {
             _gridCellEvents.OnCellClick?.Invoke(this, (int)eventData.button);
+
+            if (_gridObject != null)
+            {
+                _gridObject.OnInteract();
+            }
         }
 
         public void SetGridObject(IGridObject gridObject)

@@ -8,5 +8,6 @@ namespace _game.Scripts.Components.Grid
         bool CanMerge(IGridObject gridObject);
         void Merge(IGridObject gridObject);
         void Destroy();
+        void OnInteract();
     }
 }
