@@ -1,26 +1,29 @@
-using _game.Scripts.Core.Ui;
-using _game.Scripts.Ui.Controllers;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace _game.Scripts.Components.Grid
 {
-    public class GridCell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IDragHandler, IEndDragHandler
+    public class GridCell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler,
+        IDragHandler, IEndDragHandler
     {
         [SerializeField] private RectTransform m_rectTransform;
         [SerializeField, ReadOnly] private Vector2Int m_cord;
 
+        private GridManager _gridManager;
         private GridCellEvents _gridCellEvents;
         private IGridObject _gridObject;
 
         [Button]
-        public void Initialize(Vector2Int cord, Vector2 localPosition, GridCellEvents gridCellEvents)
+        public void Initialize(GridManager gridManager, Vector2Int cord, Vector2 localPosition,
+            GridCellEvents gridCellEvents)
         {
             name = GetIndex(cord.x, cord.y);
             m_rectTransform.anchoredPosition = localPosition;
 
             m_cord = cord;
+
+            _gridManager = gridManager;
             _gridCellEvents = gridCellEvents;
         }
 
@@ -77,12 +80,13 @@ namespace _game.Scripts.Components.Grid
             if (_gridObject == null) return;
             _gridObject.SetPosition(transform.position);
         }
-        
+
         public void OnDrag(PointerEventData eventData)
         {
+            if (_gridObject == null) return;
             var offset = GetSize() / 2;
 
-            var canvas = UiManager.Get<GameUiController>().GetComponent<Canvas>();
+            var canvas = _gridManager.GetCanvas();
             RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform,
                 eventData.position, canvas.worldCamera, out Vector2 localPos);
             var position = canvas.transform.TransformPoint(localPos + new Vector2(-offset.x, offset.y));
@@ -92,22 +96,49 @@ namespace _game.Scripts.Components.Grid
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            if (_gridObject == null) return;
             _gridObject.SetPosition(transform.position);
 
             var hoveredList = eventData.hovered;
             foreach (var hovered in hoveredList)
             {
-                if (hovered.name.Contains("x_"))
+                if (hovered == gameObject) continue;
+
+                var hoveredName = hovered.name;
+
+                // TODO can be implemented with layers or tags to be more robust
+                if (hoveredName.Contains("x_"))
                 {
-                    var gridCell = hovered.GetComponent<GridCell>();
-                    if (!gridCell.IsFilled())
+                    var targetGridCell = hovered.GetComponent<GridCell>();
+                    if (!targetGridCell.IsFilled())
                     {
-                        gridCell.SetGridObject(_gridObject);
+                        // Move
+                        targetGridCell.SetGridObject(_gridObject);
                         SetGridObject(null);
                     }
                     else
                     {
+                        var targetGridObject = targetGridCell.GetGridObject();
+                        if (targetGridObject.CanMerge(_gridObject))
+                        {
+                            // Merge
+                            targetGridObject.Merge(_gridObject);
+                            SetGridObject(null);
+                        }
+                        else
+                        {
+                            // Switch
+                            targetGridCell.SetGridObject(_gridObject);
+                            SetGridObject(targetGridObject);
+                        }
                     }
+
+                    break;
+                }
+
+                if (hoveredName.Contains("btn_inventory"))
+                {
+                    Debug.Log("Inventory Drop");
                     break;
                 }
             }

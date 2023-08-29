@@ -20,5 +20,12 @@ namespace _game.Scripts.Components.Grid.Objects
             _view.transform.SetAsLastSibling();
             _view.transform.position = position;
         }
+
+        public abstract bool CanMerge(IGridObject gridObject);
+        public abstract void Merge(IGridObject gridObject);
+        public void Destroy()
+        {
+            Object.Destroy(_view);
+        }
     }
 }

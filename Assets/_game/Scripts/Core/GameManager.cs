@@ -12,7 +12,7 @@ namespace _game.Scripts.Core
     {
         [SerializeField] private GameObject m_appliancePrefab;
         [SerializeField] private GameObject m_producerPrefab;
-        
+
         private void Awake()
         {
             InitializeAwake();
@@ -30,28 +30,42 @@ namespace _game.Scripts.Core
 
         private void InitializeStart()
         {
-            StartCoroutine(StartGame());
+            StartGame();
+        }
 
+        [Button]
+        private void StartGame()
+        {
             var gameUiController = UiManager.Get<GameUiController>();
             gameUiController.Show();
             var gridManager = gameUiController.GetGridManager();
             var gridCell = gridManager.GetCell(0, 0);
-            gridCell.SetGridObject(new ApplianceGridObject(gridManager, gridCell, m_appliancePrefab, new ApplianceGridObjectData()
-            {
-                Number = 2
-            })); 
-            
-            gridCell = gridManager.GetCell(2, 0);
-            gridCell.SetGridObject(new ApplianceGridObject(gridManager, gridCell, m_appliancePrefab, new ApplianceGridObjectData()
-            {
-                Number = 4
-            }));
-        }
+            gridCell.SetGridObject(new ApplianceGridObject(gridManager, gridCell, m_appliancePrefab,
+                new ApplianceGridObjectData()
+                {
+                    Number = 2
+                }));
 
-        [Button]
-        private IEnumerator StartGame()
-        {
-            yield return new WaitForEndOfFrame();
+            gridCell = gridManager.GetCell(2, 0);
+            gridCell.SetGridObject(new ApplianceGridObject(gridManager, gridCell, m_appliancePrefab,
+                new ApplianceGridObjectData()
+                {
+                    Number = 4
+                }));
+
+            gridCell = gridManager.GetCell(4, 0);
+            gridCell.SetGridObject(new ApplianceGridObject(gridManager, gridCell, m_appliancePrefab,
+                new ApplianceGridObjectData()
+                {
+                    Number = 2
+                }));
+
+
+            gridCell = gridManager.GetCell(6, 0);
+            gridCell.SetGridObject(new ProducerGridObject(gridManager, gridCell, m_producerPrefab,
+                new ProducerGridObjectData()
+                {
+                }));
         }
     }
 }

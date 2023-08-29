@@ -16,5 +16,15 @@ namespace _game.Scripts.Components.Grid.Objects
             _viewSpecif = _view.GetComponent<ProducerGridObjectView>();
             _viewSpecif.Render(_data);
         }
+
+        public override bool CanMerge(IGridObject gridObject)
+        {
+            return false;
+        }
+
+        public override void Merge(IGridObject gridObject)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

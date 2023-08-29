@@ -8,7 +8,7 @@ namespace _game.Scripts.Core.Ui
     public class UiController : MonoBehaviour
     {
         private const float FadeAnimationDuration = .3f;
-        private Canvas _canvas;
+        protected Canvas _canvas;
         private CanvasGroup _canvasGroup;
         private bool _isInitialized;
 

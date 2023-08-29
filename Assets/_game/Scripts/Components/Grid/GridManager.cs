@@ -13,12 +13,19 @@ namespace _game.Scripts.Components.Grid
         [SerializeField] private GridCell m_gridCellPrefab;
 
         private Dictionary<string, GridCell> _currentGrid;
+        private Canvas _canvas;
 
         [Button]
-        public void SpawnGrid()
+        public void SpawnGrid(Canvas canvas)
         {
+            _canvas = canvas;
             CleanUp();
             SpawnGrid(m_container);
+        }
+
+        public Canvas GetCanvas()
+        {
+            return _canvas;
         }
 
         private void SpawnGrid(RectTransform contentArea)
@@ -42,7 +49,7 @@ namespace _game.Scripts.Components.Grid
                     var localPosition = new Vector2(currentColumn * cellWidth,
                         -currentRow * cellHeight);
 
-                    gridCell.Initialize(cord, localPosition, new GridCellEvents()
+                    gridCell.Initialize(this, cord, localPosition, new GridCellEvents()
                     {
                         OnCellEnter = OnCellEnter,
                         OnCellExit = OnCellExit,
