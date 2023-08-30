@@ -1,4 +1,5 @@
 using _game.Scripts.Components.Grid;
+using _game.Scripts.Components.Grid.Data;
 using _game.Scripts.Components.Grid.Objects;
 using _game.Scripts.Components.Grid.Objects.Data;
 using _game.Scripts.Core.Ui;
@@ -12,6 +13,7 @@ namespace _game.Scripts.Core
     public class GameManager : MonoSingleton<GameManager>
     {
         [SerializeField] private int m_startProducerCount;
+        [SerializeField] private GridSaveManager m_saveManager;
 
         private void Awake()
         {
@@ -40,7 +42,13 @@ namespace _game.Scripts.Core
             gameUiController.Show();
             
             var gridManager = gameUiController.GetGridManager();
-            InitializeGameGrid(gridManager);
+            m_saveManager.Initialize(gridManager, "grid_json_data");
+
+            var isLoaded = m_saveManager.LoadGrid();
+            if (!isLoaded)
+            {
+                InitializeGameGrid(gridManager);    
+            }
         }
 
         private void InitializeGameGrid(GridManager gridManager)

@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 namespace _game.Scripts.Components.Grid.Objects.Data
 {
     [Serializable]
-    public class ApplianceGridObjectData
+    public class ApplianceGridObjectData : IItemData
     {
         public static int MIN_VALUE = 2;
         public static int MAX_VALUE = 2048;

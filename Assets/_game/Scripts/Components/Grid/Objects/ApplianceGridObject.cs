@@ -1,6 +1,5 @@
 using _game.Scripts.Components.Grid.Objects.Data;
 using _game.Scripts.Components.Grid.Objects.View;
-using UnityEngine;
 
 namespace _game.Scripts.Components.Grid.Objects
 {
@@ -20,6 +19,11 @@ namespace _game.Scripts.Components.Grid.Objects
         private void Refresh()
         {
             _viewSpecific.Render(_data);
+        }
+
+        public override IItemData GetData()
+        {
+            return _data;
         }
 
         public override bool CanMerge(IGridObject gridObject)

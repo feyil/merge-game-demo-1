@@ -1,3 +1,4 @@
+using _game.Scripts.Components.Grid.Objects.Data;
 using UnityEngine;
 
 namespace _game.Scripts.Components.Grid
@@ -10,5 +11,6 @@ namespace _game.Scripts.Components.Grid
         void Destroy();
         void OnInteract();
         void UpdateCell(GridCell gridCell);
+        IItemData GetData();
     }
 }

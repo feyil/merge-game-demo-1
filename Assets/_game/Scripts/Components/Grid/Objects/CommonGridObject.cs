@@ -1,3 +1,4 @@
+using _game.Scripts.Components.Grid.Objects.Data;
 using UnityEngine;
 
 namespace _game.Scripts.Components.Grid.Objects
@@ -17,6 +18,8 @@ namespace _game.Scripts.Components.Grid.Objects
             _view = Object.Instantiate(viewPrefab, gridManager.GetObjectContainer());
             _view.GetComponent<RectTransform>().sizeDelta = gridCell.GetSize();
         }
+
+        public abstract IItemData GetData();
 
         public abstract bool CanMerge(IGridObject gridObject);
         public abstract bool Merge(IGridObject gridObject);

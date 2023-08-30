@@ -117,5 +117,10 @@ namespace _game.Scripts.Components.Grid
 
             return emptyCellList[Random.Range(0, emptyCellList.Count)];
         }
+
+        public Dictionary<string, GridCell>.ValueCollection  GetAllCells()
+        {
+            return _currentGrid.Values;
+        }
     }
 }

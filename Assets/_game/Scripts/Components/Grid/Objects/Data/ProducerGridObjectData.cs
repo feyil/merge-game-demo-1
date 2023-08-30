@@ -3,7 +3,7 @@ using System;
 namespace _game.Scripts.Components.Grid.Objects.Data
 {
     [Serializable]
-    public class ProducerGridObjectData
+    public class ProducerGridObjectData : IItemData
     {
         public static int MAX_CAPACITY = 10;
         public static int CAPACITY_INCREASE_DURATION = 30;

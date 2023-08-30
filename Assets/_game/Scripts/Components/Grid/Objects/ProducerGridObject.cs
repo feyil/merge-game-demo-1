@@ -24,6 +24,11 @@ namespace _game.Scripts.Components.Grid.Objects
             _capacityCoroutine = GameManager.Instance.StartCoroutine(IncreaseCapacity());
         }
 
+        public override IItemData GetData()
+        {
+            return _data;
+        }
+
         public override bool CanMerge(IGridObject gridObject)
         {
             return false;
