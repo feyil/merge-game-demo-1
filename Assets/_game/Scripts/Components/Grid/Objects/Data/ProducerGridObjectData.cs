@@ -6,7 +6,7 @@ namespace _game.Scripts.Components.Grid.Objects.Data
     public class ProducerGridObjectData
     {
         public static int MAX_CAPACITY = 10;
-        public static int CAPACITY_INCREASE_DURATION = 5;
+        public static int CAPACITY_INCREASE_DURATION = 30;
         
         public int Capacity;
         public int CapacityIncreaseDuration;

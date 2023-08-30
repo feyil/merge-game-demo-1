@@ -1,14 +1,18 @@
+using _game.Scripts.Components.Grid;
 using _game.Scripts.Components.Grid.Objects;
 using _game.Scripts.Components.Grid.Objects.Data;
 using _game.Scripts.Core.Ui;
 using _game.Scripts.Ui.Controllers;
 using _game.Scripts.Utility;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace _game.Scripts.Core
 {
     public class GameManager : MonoSingleton<GameManager>
     {
+        [SerializeField] private int m_startProducerCount;
+
         private void Awake()
         {
             InitializeAwake();
@@ -34,19 +38,21 @@ namespace _game.Scripts.Core
         {
             var gameUiController = UiManager.Get<GameUiController>();
             gameUiController.Show();
-
+            
             var gridManager = gameUiController.GetGridManager();
-            
-            GridObjectSpawner.Instance.SpawnApplianceGridObject(gridManager, 0, 0,
-                new ApplianceGridObjectData() { Number = 2 });
-            
-            GridObjectSpawner.Instance.SpawnApplianceGridObject(gridManager, 2, 0,
-                new ApplianceGridObjectData() { Number = 4 });
-            
-            GridObjectSpawner.Instance.SpawnApplianceGridObject(gridManager, 4, 0,
-                new ApplianceGridObjectData() { Number = 2 });
+            InitializeGameGrid(gridManager);
+        }
 
-            GridObjectSpawner.Instance.SpawnProducerGridObject(gridManager, 6, 0, ProducerGridObjectData.GetDefaultData());
+        private void InitializeGameGrid(GridManager gridManager)
+        {
+            for (var i = 0; i < m_startProducerCount; i++)
+            {
+                var spawnPoint = gridManager.GetRandomEmptyCell();
+                var spawnCord = spawnPoint.GetCord();
+
+                GridObjectSpawner.Instance.SpawnProducerGridObject(gridManager, spawnCord.x, spawnCord.y,
+                    ProducerGridObjectData.GetDefaultData());
+            }
         }
     }
 }

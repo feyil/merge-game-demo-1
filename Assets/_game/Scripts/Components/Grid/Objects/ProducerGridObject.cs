@@ -76,7 +76,7 @@ namespace _game.Scripts.Components.Grid.Objects
                 yield return _capacityIncreaseDuration;
                 var newCapacity = _data.Capacity + 1;
                 _data.Capacity = Mathf.Clamp(newCapacity, 0, ProducerGridObjectData.MAX_CAPACITY);
-                Debug.Log($"New Capacity {_data.Capacity}");
+                // Debug.Log($"New Capacity {_data.Capacity}");
             }
 
             _capacityCoroutine = null;
