@@ -6,7 +6,7 @@ namespace _game.Scripts.Components.Grid
     {
         void SetPosition(Vector3 position);
         bool CanMerge(IGridObject gridObject);
-        void Merge(IGridObject gridObject);
+        bool Merge(IGridObject gridObject);
         void Destroy();
         void OnInteract();
         void UpdateCell(GridCell gridCell);

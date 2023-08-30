@@ -29,17 +29,18 @@ namespace _game.Scripts.Components.Grid.Objects
             return applianceGridObject._data.Number == _data.Number;
         }
 
-        public override void Merge(IGridObject gridObject)
+        public override bool Merge(IGridObject gridObject)
         {
             var applianceGridObject = gridObject as ApplianceGridObject;
-            if (applianceGridObject == null) return;
+            if (applianceGridObject == null) return false;
 
             var gridObjectNumber = applianceGridObject._data.Number;
-            if (gridObjectNumber == ApplianceGridObjectData.MAX_VALUE) return;
+            if (gridObjectNumber == ApplianceGridObjectData.MAX_VALUE) return false;
             
             _data.Number += gridObjectNumber;
             gridObject.Destroy();
             Refresh();
+            return true;
         }
 
         public override void OnInteract()

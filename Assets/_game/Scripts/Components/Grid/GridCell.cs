@@ -128,8 +128,11 @@ namespace _game.Scripts.Components.Grid
                         if (targetGridObject.CanMerge(_gridObject))
                         {
                             // Merge
-                            targetGridObject.Merge(_gridObject);
-                            SetGridObject(null);
+                            var isSuccess = targetGridObject.Merge(_gridObject);
+                            if (isSuccess)
+                            {
+                                SetGridObject(null);
+                            }
                         }
                         else
                         {

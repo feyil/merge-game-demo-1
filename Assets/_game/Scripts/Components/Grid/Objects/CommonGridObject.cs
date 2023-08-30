@@ -19,7 +19,7 @@ namespace _game.Scripts.Components.Grid.Objects
         }
 
         public abstract bool CanMerge(IGridObject gridObject);
-        public abstract void Merge(IGridObject gridObject);
+        public abstract bool Merge(IGridObject gridObject);
 
         public abstract void OnInteract();
 
@@ -35,7 +35,7 @@ namespace _game.Scripts.Components.Grid.Objects
             _view.transform.position = position;
         }
 
-        public void Destroy()
+        public virtual void Destroy()
         {
             _gridCell.SetGridObject(null);
             UpdateCell(null);

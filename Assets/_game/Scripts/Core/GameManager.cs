@@ -2,12 +2,12 @@ using _game.Scripts.Components.Grid.Objects;
 using _game.Scripts.Components.Grid.Objects.Data;
 using _game.Scripts.Core.Ui;
 using _game.Scripts.Ui.Controllers;
+using _game.Scripts.Utility;
 using Sirenix.OdinInspector;
-using UnityEngine;
 
 namespace _game.Scripts.Core
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : MonoSingleton<GameManager>
     {
         private void Awake()
         {
@@ -46,10 +46,7 @@ namespace _game.Scripts.Core
             GridObjectSpawner.Instance.SpawnApplianceGridObject(gridManager, 4, 0,
                 new ApplianceGridObjectData() { Number = 2 });
 
-            GridObjectSpawner.Instance.SpawnProducerGridObject(gridManager, 6, 0, new ProducerGridObjectData()
-            {
-                Capacity = 10
-            });
+            GridObjectSpawner.Instance.SpawnProducerGridObject(gridManager, 6, 0, ProducerGridObjectData.GetDefaultData());
         }
     }
 }
