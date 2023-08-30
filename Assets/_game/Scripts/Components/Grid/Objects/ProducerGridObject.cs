@@ -31,6 +31,8 @@ namespace _game.Scripts.Components.Grid.Objects
         public override void OnInteract()
         {
             var center = _gridCell.GetCord();
+            if (_data.Capacity <= 0) return;
+
             var spawnPoint = FindSpawnPoint(center);
 
             if (spawnPoint == null) return;
@@ -38,6 +40,17 @@ namespace _game.Scripts.Components.Grid.Objects
 
             GridObjectSpawner.Instance.SpawnApplianceGridObject(_gridManager, spawnCord.x, spawnCord.y,
                 ApplianceGridObjectData.GetRandomData());
+
+            _data.Capacity--;
+            if (_data.Capacity != 0) return;
+
+            Destroy();
+            spawnPoint = _gridManager.GetRandomEmptyCell();
+            if (spawnPoint == null) return;
+            spawnCord = spawnPoint.GetCord();
+
+            GridObjectSpawner.Instance.SpawnProducerGridObject(_gridManager, spawnCord.x, spawnCord.y,
+                ProducerGridObjectData.GetDefaultData());
         }
 
         private GridCell FindSpawnPoint(Vector2Int center)

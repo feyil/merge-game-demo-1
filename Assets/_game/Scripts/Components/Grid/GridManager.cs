@@ -103,5 +103,19 @@ namespace _game.Scripts.Components.Grid
         private void OnCellClick(GridCell gridCell, int button)
         {
         }
+
+        public GridCell GetRandomEmptyCell()
+        {
+            var emptyCellList = new List<GridCell>();
+            foreach (var value in _currentGrid.Values)
+            {
+                if (!value.IsFilled())
+                {
+                    emptyCellList.Add(value);
+                }
+            }
+
+            return emptyCellList[Random.Range(0, emptyCellList.Count)];
+        }
     }
 }

@@ -46,7 +46,10 @@ namespace _game.Scripts.Core
             GridObjectSpawner.Instance.SpawnApplianceGridObject(gridManager, 4, 0,
                 new ApplianceGridObjectData() { Number = 2 });
 
-            GridObjectSpawner.Instance.SpawnProducerGridObject(gridManager, 6, 0, new ProducerGridObjectData());
+            GridObjectSpawner.Instance.SpawnProducerGridObject(gridManager, 6, 0, new ProducerGridObjectData()
+            {
+                Capacity = 10
+            });
         }
     }
 }
