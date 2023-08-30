@@ -79,11 +79,12 @@ namespace _game.Scripts.Components.Grid
             }
         }
 
-        public void SetGridObject(IGridObject gridObject)
+        public void SetGridObject(IGridObject newGridObject)
         {
-            _gridObject = gridObject;
-            if (_gridObject == null) return;
-            _gridObject.SetPosition(transform.position);
+            newGridObject?.UpdateCell(this);
+            newGridObject?.SetPosition(transform.position);
+
+            _gridObject = newGridObject;
         }
 
         public void OnDrag(PointerEventData eventData)

@@ -9,5 +9,6 @@ namespace _game.Scripts.Components.Grid
         void Merge(IGridObject gridObject);
         void Destroy();
         void OnInteract();
+        void UpdateCell(GridCell gridCell);
     }
 }

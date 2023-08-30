@@ -62,6 +62,11 @@ namespace _game.Scripts.Components.Grid
             }
         }
 
+        public Vector2Int GetDimensions()
+        {
+            return m_dimension;
+        }
+
         public RectTransform GetObjectContainer()
         {
             return m_objectContainer;

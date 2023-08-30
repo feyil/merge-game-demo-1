@@ -7,19 +7,19 @@ namespace _game.Scripts.Components.Grid.Objects
     public class ApplianceGridObject : CommonGridObject
     {
         private readonly ApplianceGridObjectData _data;
-        private readonly ApplianceGridObjectView _viewSpecif;
+        private readonly ApplianceGridObjectView _viewSpecific;
 
         public ApplianceGridObject(GridManager gridManager, GridCell gridCell, ApplianceGridObjectView viewPrefab,
             ApplianceGridObjectData data) : base(gridManager, gridCell, viewPrefab.gameObject)
         {
             _data = data;
-            _viewSpecif = _view.GetComponent<ApplianceGridObjectView>();
+            _viewSpecific = _view.GetComponent<ApplianceGridObjectView>();
             Refresh();
         }
 
         private void Refresh()
         {
-            _viewSpecif.Render(_data);
+            _viewSpecific.Render(_data);
         }
 
         public override bool CanMerge(IGridObject gridObject)
@@ -34,14 +34,20 @@ namespace _game.Scripts.Components.Grid.Objects
             var applianceGridObject = gridObject as ApplianceGridObject;
             if (applianceGridObject == null) return;
 
-            _data.Number += applianceGridObject._data.Number;
+            var gridObjectNumber = applianceGridObject._data.Number;
+            if (gridObjectNumber == ApplianceGridObjectData.MAX_VALUE) return;
+            
+            _data.Number += gridObjectNumber;
             gridObject.Destroy();
             Refresh();
         }
 
         public override void OnInteract()
         {
-            Debug.Log($"Interacted {_view.name}");
+            if (_data.Number == ApplianceGridObjectData.MAX_VALUE)
+            {
+                Destroy();
+            }
         }
     }
 }
