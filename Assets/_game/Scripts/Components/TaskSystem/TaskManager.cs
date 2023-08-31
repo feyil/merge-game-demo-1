@@ -81,7 +81,7 @@ namespace _game.Scripts.Components.TaskSystem
         private GridTask GenerateTask()
         {
             var maxNumber = FindMaxNumber() * 2;
-            if (maxNumber >= ApplianceGridObjectData.MAX_VALUE) return null;
+            if (maxNumber > ApplianceGridObjectData.MAX_VALUE) return null;
 
             foreach (var gridTask in _gridTaskList)
             {

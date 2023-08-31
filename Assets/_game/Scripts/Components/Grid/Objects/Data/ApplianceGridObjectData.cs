@@ -11,6 +11,7 @@ namespace _game.Scripts.Components.Grid.Objects.Data
         public static int MAX_VALUE = 2048;
 
         public int Number;
+        public Color Color = Color.magenta;
 
         public static ApplianceGridObjectData GetRandomData()
         {

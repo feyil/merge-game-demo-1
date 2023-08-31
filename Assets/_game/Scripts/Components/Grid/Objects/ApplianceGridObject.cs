@@ -1,5 +1,6 @@
 using _game.Scripts.Components.Grid.Objects.Data;
 using _game.Scripts.Components.Grid.Objects.View;
+using UnityEngine;
 
 namespace _game.Scripts.Components.Grid.Objects
 {
@@ -65,6 +66,12 @@ namespace _game.Scripts.Components.Grid.Objects
         public int GetNumber()
         {
             return _data.Number;
+        }
+
+        public void RenderTaskTargetView()
+        {
+            _data.Color = Color.green;
+            _viewSpecific.Render(_data);
         }
     }
 }

@@ -30,6 +30,10 @@ namespace _game.Scripts.Components.TaskSystem.Data
 
             if (applianceObject.GetNumber() == GetNumber() && !_satisfiedList.Contains(applianceObject))
             {
+                if (_satisfiedList.Count == 0)
+                {
+                    applianceObject.RenderTaskTargetView();
+                }
                 _satisfiedList.Add(applianceObject);
             }
         }
@@ -41,7 +45,12 @@ namespace _game.Scripts.Components.TaskSystem.Data
 
             if (applianceObject.GetNumber() == GetNumber() && _satisfiedList.Contains(applianceObject))
             {
+                var index = _satisfiedList.IndexOf(applianceObject);
                 _satisfiedList.Remove(applianceObject);
+                if (index == 0 && _satisfiedList.Count != 0)
+                {
+                    _satisfiedList[0].RenderTaskTargetView();
+                }
             }
         }
 
