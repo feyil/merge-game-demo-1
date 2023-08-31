@@ -3,10 +3,10 @@ using _game.Scripts.Components.Grid;
 using _game.Scripts.Components.Grid.Data;
 using _game.Scripts.Components.Grid.Objects;
 using _game.Scripts.Components.Grid.Objects.Data;
+using _game.Scripts.Components.InventorySystem;
 using _game.Scripts.Components.TaskSystem;
 using _game.Scripts.Components.TaskSystem.Data;
 using _game.Scripts.Core.Ui;
-using _game.Scripts.Ui;
 using _game.Scripts.Ui.Controllers;
 using _game.Scripts.Utility;
 using Sirenix.OdinInspector;
@@ -19,6 +19,7 @@ namespace _game.Scripts.Core
         [SerializeField] private int m_startProducerCount;
         [SerializeField] private GridSaveManager m_saveManager;
         [SerializeField] private TaskManager m_taskManager;
+        [SerializeField] private InventoryManager m_inventoryManager;
 
         private void Awake()
         {
@@ -47,9 +48,10 @@ namespace _game.Scripts.Core
             gameUiController.Show();
 
             var gridManager = gameUiController.GetGridManager();
+            
             m_saveManager.Initialize(gridManager, "grid_json_data");
-
             m_taskManager.Initialize(gridManager);
+            m_inventoryManager.Initialize();
 
             var gameEventManager = GameEventManager.Instance;
             gameEventManager.OnGridObjectAdded -= m_taskManager.OnGridObjectAdded;
@@ -57,10 +59,13 @@ namespace _game.Scripts.Core
 
             gameEventManager.OnGridObjectRemoved -= m_taskManager.OnGridObjectRemoved;
             gameEventManager.OnGridObjectRemoved += m_taskManager.OnGridObjectRemoved;
-            
+
+            gameEventManager.OnInventoryDrop -= m_inventoryManager.AddItem;
+            gameEventManager.OnInventoryDrop += m_inventoryManager.AddItem;
+
             m_taskManager.OnRefresh -= OnRefreshTaskView;
             m_taskManager.OnRefresh += OnRefreshTaskView;
-            
+
             var isLoaded = m_saveManager.LoadGrid();
             if (!isLoaded)
             {

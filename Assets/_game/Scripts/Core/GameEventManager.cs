@@ -9,6 +9,7 @@ namespace _game.Scripts.Core
     {
         public event Action<IGridObject> OnGridObjectAdded;
         public event Action<IGridObject> OnGridObjectRemoved;
+        public event Action<IGridObject> OnInventoryDrop;
 
         public void TriggerOnGridObjectAdded(IGridObject gridObject)
         {
@@ -18,6 +19,11 @@ namespace _game.Scripts.Core
         public void TriggerOnGridObjectRemoved(IGridObject gridObject)
         {
             OnGridObjectRemoved?.Invoke(gridObject);
+        }
+
+        public void TriggerOnInventoryDrop(IGridObject gridObject)
+        {
+            OnInventoryDrop?.Invoke(gridObject);
         }
     }
 }

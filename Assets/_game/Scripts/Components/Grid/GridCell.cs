@@ -1,3 +1,4 @@
+using _game.Scripts.Core;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -147,7 +148,7 @@ namespace _game.Scripts.Components.Grid
 
                 if (hoveredName.Contains("btn_inventory"))
                 {
-                    Debug.Log("Inventory Drop");
+                    GameEventManager.Instance.TriggerOnInventoryDrop(_gridObject);
                     break;
                 }
             }
