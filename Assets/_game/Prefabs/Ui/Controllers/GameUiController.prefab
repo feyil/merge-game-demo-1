@@ -204,6 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4ac5445b32e4638bd952d6f05e5fb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_inventoryButton: {fileID: 2158006340072759054}
   m_gridManager: {fileID: 2158006340797550238}
   m_taskViewController: {fileID: 405387189518075129}
 --- !u!1 &2158006339982672547

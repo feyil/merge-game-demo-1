@@ -1,10 +1,11 @@
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _game.Scripts.Core.Ui
 {
-    [RequireComponent(typeof(Canvas), typeof(CanvasGroup))]
+    [RequireComponent(typeof(Canvas), typeof(CanvasGroup), typeof(GraphicRaycaster))]
     public class UiController : MonoBehaviour
     {
         private const float FadeAnimationDuration = .3f;
