@@ -1,5 +1,6 @@
 using _game.Scripts.Components.Grid.Objects.Data;
 using _game.Scripts.Components.Grid.Objects.View;
+using _game.Scripts.Core;
 using _game.Scripts.Utility;
 using UnityEngine;
 
@@ -18,6 +19,8 @@ namespace _game.Scripts.Components.Grid.Objects
             
             var applianceGridObject = new ApplianceGridObject(gridManager, gridCell, m_applianceGridObjectView, data);
             gridCell.SetGridObject(applianceGridObject);
+            
+            GameEventManager.Instance.TriggerOnGridObjectAdded(applianceGridObject);
             return applianceGridObject;
         }
 
@@ -30,6 +33,8 @@ namespace _game.Scripts.Components.Grid.Objects
             var producerGridObject =
                 new ProducerGridObject(gridManager, gridCell, m_producerGridObjectViewPrefab, data);
             gridCell.SetGridObject(producerGridObject);
+            
+            GameEventManager.Instance.TriggerOnGridObjectAdded(producerGridObject);
             return producerGridObject;
         }
     }

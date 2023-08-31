@@ -40,10 +40,17 @@ namespace _game.Scripts.Components.Grid.Objects
 
             var gridObjectNumber = applianceGridObject._data.Number;
             if (gridObjectNumber == ApplianceGridObjectData.MAX_VALUE) return false;
-            
-            _data.Number += gridObjectNumber;
+
+            var cord = _gridCell.GetCord();
             gridObject.Destroy();
-            Refresh();
+            Destroy();
+            
+            GridObjectSpawner.Instance.SpawnApplianceGridObject(_gridManager, cord.x, cord.y,
+                new ApplianceGridObjectData()
+                {
+                    Number = _data.Number * 2
+                });
+            
             return true;
         }
 
@@ -53,6 +60,11 @@ namespace _game.Scripts.Components.Grid.Objects
             {
                 Destroy();
             }
+        }
+
+        public int GetNumber()
+        {
+            return _data.Number;
         }
     }
 }

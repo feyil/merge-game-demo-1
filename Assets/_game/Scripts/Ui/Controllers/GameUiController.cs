@@ -7,6 +7,7 @@ namespace _game.Scripts.Ui.Controllers
     public class GameUiController : UiController
     {
         [SerializeField] private GridManager m_gridManager;
+        [SerializeField] private TaskViewController m_taskViewController;
 
         public override void Show()
         {
@@ -17,6 +18,11 @@ namespace _game.Scripts.Ui.Controllers
         public GridManager GetGridManager()
         {
             return m_gridManager;
+        }
+
+        public TaskViewController GetTaskViewController()
+        {
+            return m_taskViewController;
         }
     }
 }

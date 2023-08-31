@@ -1,4 +1,5 @@
 using _game.Scripts.Components.Grid.Objects.Data;
+using _game.Scripts.Core;
 using UnityEngine;
 
 namespace _game.Scripts.Components.Grid.Objects
@@ -40,6 +41,7 @@ namespace _game.Scripts.Components.Grid.Objects
 
         public virtual void Destroy()
         {
+            GameEventManager.Instance.TriggerOnGridObjectRemoved(this);
             _gridCell.SetGridObject(null);
             UpdateCell(null);
             Object.Destroy(_view);

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using _game.Scripts.Components.Grid.Objects.Data;
 using _game.Scripts.Components.Grid.Objects.View;
