@@ -1,6 +1,6 @@
 using System;
-using _game.Scripts.Components.Grid.Objects.Data;
-using _game.Scripts.Components.Grid.Objects.View;
+using _game.Packages.GridPackage.Scripts.Objects.Data;
+using _game.Packages.GridPackage.Scripts.Objects.View;
 using _game.Scripts.Components.TaskSystem;
 using _game.Scripts.Components.TaskSystem.Data;
 using UnityEngine;

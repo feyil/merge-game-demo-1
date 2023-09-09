@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace _game.Scripts.Components.Grid
+namespace _game.Packages.GridPackage.Scripts
 {
     public class GridCell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler,
         IDragHandler, IEndDragHandler

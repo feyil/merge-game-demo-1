@@ -1,4 +1,4 @@
-using _game.Scripts.Components.Grid;
+using _game.Packages.GridPackage.Scripts;
 using _game.Scripts.Core.Ui;
 using UnityEngine;
 using UnityEngine.UI;

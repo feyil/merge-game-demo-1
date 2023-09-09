@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using _game.Scripts.Components.Grid;
-using _game.Scripts.Components.Grid.Objects;
+using _game.Packages.GridPackage.Scripts;
+using _game.Packages.GridPackage.Scripts.Objects;
 
 namespace _game.Scripts.Components.TaskSystem.Data
 {

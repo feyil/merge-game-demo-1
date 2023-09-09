@@ -1,6 +1,6 @@
 using System;
 
-namespace _game.Scripts.Components.Grid.Objects.Data
+namespace _game.Packages.GridPackage.Scripts.Objects.Data
 {
     [Serializable]
     public class ProducerGridObjectData : IItemData

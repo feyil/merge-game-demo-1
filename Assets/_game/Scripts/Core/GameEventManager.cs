@@ -1,5 +1,5 @@
 using System;
-using _game.Scripts.Components.Grid;
+using _game.Packages.GridPackage.Scripts;
 using _game.Scripts.Utility;
 
 namespace _game.Scripts.Core

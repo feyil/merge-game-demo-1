@@ -1,6 +1,6 @@
 using System;
 
-namespace _game.Scripts.Components.Grid
+namespace _game.Packages.GridPackage.Scripts
 {
     [Serializable]
     public class GridCellEvents

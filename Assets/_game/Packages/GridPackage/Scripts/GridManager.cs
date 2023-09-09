@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace _game.Scripts.Components.Grid
+namespace _game.Packages.GridPackage.Scripts
 {
     public class GridManager : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace _game.Scripts.Components.Grid.Data
+namespace _game.Packages.GridPackage.Scripts.Data
 {
     [Serializable]
     public class GridData

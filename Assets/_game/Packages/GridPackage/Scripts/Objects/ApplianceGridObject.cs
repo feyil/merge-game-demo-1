@@ -1,8 +1,8 @@
-using _game.Scripts.Components.Grid.Objects.Data;
-using _game.Scripts.Components.Grid.Objects.View;
+using _game.Packages.GridPackage.Scripts.Objects.Data;
+using _game.Packages.GridPackage.Scripts.Objects.View;
 using UnityEngine;
 
-namespace _game.Scripts.Components.Grid.Objects
+namespace _game.Packages.GridPackage.Scripts.Objects
 {
     public class ApplianceGridObject : CommonGridObject
     {

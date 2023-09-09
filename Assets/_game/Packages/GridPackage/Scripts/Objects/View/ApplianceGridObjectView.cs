@@ -1,9 +1,9 @@
-using _game.Scripts.Components.Grid.Objects.Data;
+using _game.Packages.GridPackage.Scripts.Objects.Data;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _game.Scripts.Components.Grid.Objects.View
+namespace _game.Packages.GridPackage.Scripts.Objects.View
 {
     public class ApplianceGridObjectView : MonoBehaviour
     {

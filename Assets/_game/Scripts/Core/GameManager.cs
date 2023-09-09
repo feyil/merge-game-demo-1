@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using _game.Scripts.Components.Grid;
-using _game.Scripts.Components.Grid.Data;
-using _game.Scripts.Components.Grid.Objects;
-using _game.Scripts.Components.Grid.Objects.Data;
+using _game.Packages.GridPackage.Scripts;
+using _game.Packages.GridPackage.Scripts.Data;
+using _game.Packages.GridPackage.Scripts.Objects;
+using _game.Packages.GridPackage.Scripts.Objects.Data;
 using _game.Scripts.Components.InventorySystem;
 using _game.Scripts.Components.TaskSystem;
 using _game.Scripts.Components.TaskSystem.Data;

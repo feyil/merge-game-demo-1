@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using _game.Scripts.Components.Grid.Objects;
-using _game.Scripts.Components.Grid.Objects.Data;
+using _game.Packages.GridPackage.Scripts.Objects;
+using _game.Packages.GridPackage.Scripts.Objects.Data;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace _game.Scripts.Components.Grid.Data
+namespace _game.Packages.GridPackage.Scripts.Data
 {
     public class GridSaveManager : MonoBehaviour
     {
